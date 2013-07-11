@@ -23,7 +23,7 @@ byteslice, err := sbs.Enc(p)
 ...
 
 foo := new(Foo)
-structobject, err := Dec(foo, byteslice)
+structobject, err := sbs.Dec(foo, byteslice)
 ...
 ```
 
