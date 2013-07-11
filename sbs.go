@@ -1,5 +1,5 @@
-// structbytes can encode a struct to a byte slice and back
-// This is usful if you need to save data in a key value database such as
+// sbs can encode a struct to a byte slice and back
+// This is useful if you need to save data in a key value database such as
 // a leveldb, because a leveldb only takes bytes as values.
 package sbs
 
