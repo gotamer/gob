@@ -1,11 +1,11 @@
-GoTamer sbs
-===========
+GoTamer sbs v2
+==============
 
 sbs stands for Struct to Byte slice and back to Struct
 
 sbs can encode a struct to a byte slice and back.
 
-This is useful if you need to save data in a key value database for example, such as the leveldb, because the leveldb only takes bytes as values.
+This is useful if you need to save data in a key value database, such as the leveldb, because the leveldb only takes bytes as values.
 
 sbs encodes your struct first to a Gob, then it convers it to a byte slice, and it reverses the process for encoding.
 
@@ -23,7 +23,7 @@ byteslice, err := sbs.Enc(p)
 ...
 
 foo := new(Foo)
-structobject, err := sbs.Dec(foo, byteslice)
+err := sbs.Dec(foo, byteslice)
 ...
 ```
 

@@ -23,14 +23,14 @@ func Enc(o interface{}) (b []byte, err error) {
 }
 
 // Dec takes an empty struct as well as the []byte returned by Enc(),
-// and returns a populated struct.
-func Dec(o interface{}, b []byte) (interface{}, error) {
+// and populates the given empty struct from the []byte.
+func Dec(o interface{}, b []byte) (err error) {
 	var buf bytes.Buffer
-	_, err := buf.Write(b)
+	_, err = buf.Write(b)
 	if err != nil {
-		return o, err
+		return
 	}
 	dec := gob.NewDecoder(&buf)
 	err = dec.Decode(o)
-	return o, err
+	return
 }
