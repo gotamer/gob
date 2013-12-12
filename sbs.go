@@ -1,10 +1,27 @@
-// Copyright © 2013 Dennis T Kaplan <http://www.robotamer.com>
-
 // sbs can encode a struct to a byte slice and back
 // This is useful if you need to save data in a key value database such as
 // a leveldb, because a leveldb only takes bytes as values.
+// You can use sbs also as the backend to satify the interfaces
+// BinaryMarshaler and BinaryUnmarshaler by simply creating two functions for
+// your struct called MarshalBinary() and UnmarshalBinary
+//
+// Example:
+// type MyStruct struct {
+//     A, B, C string
+// }
+//
+// func (o *MyStruct) MarshalBinary() (data []byte, err error) {
+//     data, err := sbs.Enc(o)
+//     return
+// }
+//
+// func (o *MyStruct) UnmarshalBinary(data []byte) error {
+//     return sbs.Dec(o, data)
+// }
 package sbs
 
+// Copyright © 2013 Dennis T Kaplan <http://www.robotamer.com>
+// The standard MIT License can be found at robotamer.com
 import (
 	"bytes"
 	"encoding/gob"

@@ -31,12 +31,15 @@ func TestEncDec(t *testing.T) {
 	if err = Dec(oo, bs); err != nil {
 		t.Errorf("Dec Error: %v", err.Error())
 	}
+
 	if oo.A != o.A {
 		t.Errorf("Dec %v should be %v", oo.A, o.A)
 	}
+
 	if oo.B != o.B {
 		t.Errorf("Dec %v should be %v", oo.B, o.B)
 	}
+
 	if oo.C != o.C {
 		t.Errorf("Dec %v should be %v", oo.C, o.C)
 	}
