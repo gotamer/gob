@@ -9,7 +9,6 @@ This is useful if you need to save data in a key value database, such as the lev
 
 sbs encodes your struct first to a Gob, then it convers it to a byte slice, and it reverses the process for encoding.
 
-
 #### Example
 ```
 type Foo struct {
@@ -25,6 +24,25 @@ byteslice, err := sbs.Enc(p)
 foo := new(Foo)
 err := sbs.Dec(foo, byteslice)
 ...
+```
+
+You can use sbs also as the backend to satify the interfaces
+BinaryMarshaler and BinaryUnmarshaler by simply creating two functions for your struct called MarshalBinary() and UnmarshalBinary
+
+#### Example
+```go
+type MyStruct struct {
+    A, B, C string
+}
+
+func (o *MyStruct) MarshalBinary() (data []byte, err error) {
+    data, err := sbs.Enc(o)
+    return
+}
+
+func (o *MyStruct) UnmarshalBinary(data []byte) error {
+    return sbs.Dec(o, data)
+}
 ```
 
 Code is available at <https://bitbucket.org/gotamer/sbs>
