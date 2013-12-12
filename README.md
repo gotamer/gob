@@ -10,7 +10,7 @@ This is useful if you need to save data in a key value database, such as the lev
 sbs encodes your struct first to a Gob, then it convers it to a byte slice, and it reverses the process for encoding.
 
 #### Example
-```
+```go
 type Foo struct {
 	A int
 	B string
