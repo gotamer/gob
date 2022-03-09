@@ -1,4 +1,6 @@
 //Package gob implements Marshal and Unmarshal using the standard GOB package
+package gob
+
 import (
 	"bytes"
 	"encoding/gob"
