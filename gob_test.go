@@ -1,8 +1,4 @@
-// Copyright (c) 2012 The GoTamer Authors. All rights reserved.
-// Use of this source code is governed by the MIT license.
-// The license can be found at http://www.robotamer.com
-
-package sbs
+package gob
 
 import (
 	"testing"
@@ -23,12 +19,12 @@ func TestEncDec(t *testing.T) {
 	var err error
 	var bs []byte
 
-	if bs, err = Enc(o); err != nil {
+	if bs, err = Marshal(o); err != nil {
 		t.Errorf("Enc Error: %v", err.Error())
 	}
 
 	oo := new(T)
-	if err = Dec(oo, bs); err != nil {
+	if err = Unmarshal(bs, oo); err != nil {
 		t.Errorf("Dec Error: %v", err.Error())
 	}
 
